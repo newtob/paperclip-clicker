@@ -69,18 +69,25 @@ export function injectStyles(): void {
       -webkit-tap-highlight-color: transparent;
     }
 
-    .svg-container svg {
-      transition: transform 150ms ease;
+    .device-sprite {
       width: clamp(150px, 30vw, 250px);
-      height: auto;
+      height: clamp(150px, 30vw, 250px);
+      background-repeat: no-repeat;
+      transition: transform 150ms ease;
+      image-rendering: auto;
     }
 
-    .svg-container:hover svg {
+    .device-sprite-bear {
+      width: clamp(200px, 40vw, 350px);
+      height: clamp(200px, 40vw, 350px);
+    }
+
+    .svg-container:hover .device-sprite {
       transform: scale(1.1);
     }
 
-    .svg-container:active svg,
-    .svg-container.squish svg {
+    .svg-container:active .device-sprite,
+    .svg-container.squish .device-sprite {
       transform: scale(0.9);
     }
 

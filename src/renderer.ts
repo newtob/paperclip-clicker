@@ -27,8 +27,8 @@ export function initializeRenderer(
   // SVG container
   const svgContainer = document.createElement('div');
   svgContainer.className = 'svg-container';
-  const initialSvg = createDeviceSvg(1);
-  svgContainer.appendChild(initialSvg);
+  const initialSprite = createDeviceSvg(1);
+  svgContainer.appendChild(initialSprite);
 
   svgContainer.addEventListener('click', () => {
     onClickSvg();
@@ -106,17 +106,17 @@ export function updateRenderer(api: RendererApi, state: GameState): void {
     document.body.style.backgroundColor = bgColor;
   }
 
-  // Update SVG if level changed
-  const currentSvg = api.svgContainer.querySelector('svg');
+  // Update device sprite if level changed
+  const currentSprite = api.svgContainer.querySelector('.device-sprite');
   const expectedLevel = state.currentLevel;
   const currentDataLevel = api.svgContainer.getAttribute('data-level');
 
   if (currentDataLevel !== String(expectedLevel)) {
-    if (currentSvg) {
-      api.svgContainer.removeChild(currentSvg);
+    if (currentSprite) {
+      api.svgContainer.removeChild(currentSprite);
     }
-    const newSvg = createDeviceSvg(expectedLevel);
-    api.svgContainer.appendChild(newSvg);
+    const newSprite = createDeviceSvg(expectedLevel);
+    api.svgContainer.appendChild(newSprite);
     api.svgContainer.setAttribute('data-level', String(expectedLevel));
   }
 
