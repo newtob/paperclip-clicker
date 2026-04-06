@@ -11,6 +11,8 @@ document.addEventListener('wheel', (e) => {
   if (e.ctrlKey || e.metaKey) e.preventDefault();
 }, { passive: false });
 
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
 document.addEventListener('keydown', (e) => {
   if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=')) {
     e.preventDefault();
