@@ -61,10 +61,20 @@ npm run lint       # Biome linting
 npm run test       # Run tests
 ```
 
+## Deployment
+
+This project is deployed to [Vercel](https://vercel.com) via GitHub integration. Pushes to `main` trigger automatic production deployments.
+
+### Vercel Tooling
+
+- **Vercel Plugin** — added via `npx plugins add vercel/vercel-plugin` for Claude Code integration
+- **@vercel/analytics** — client-side analytics for tracking page views and web vitals
+
 ## Tech Stack
 
 - TypeScript 6.0+ (strict mode, ESM)
 - Vite (dev server and bundler)
 - Biome (linting and formatting)
 - Vitest (testing)
-- No framework - vanilla TypeScript with DOM manipulation
+- Vercel (hosting and deployment)
+- No framework — vanilla TypeScript with DOM manipulation
