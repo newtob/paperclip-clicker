@@ -6,6 +6,17 @@ import { injectStyles } from './styles.js';
 
 injectStyles();
 
+// Prevent accidental zoom (Ctrl/Cmd+scroll and Ctrl/Cmd+plus/minus)
+document.addEventListener('wheel', (e) => {
+  if (e.ctrlKey || e.metaKey) e.preventDefault();
+}, { passive: false });
+
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=')) {
+    e.preventDefault();
+  }
+});
+
 const appEl = document.getElementById('app');
 if (!appEl) {
   throw new Error('Missing #app element');
