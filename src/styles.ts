@@ -19,6 +19,15 @@ export function injectStyles(): void {
       transition: background-color 300ms ease;
     }
 
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('/background.png') center center / cover no-repeat;
+      pointer-events: none;
+      z-index: 0;
+    }
+
     #app {
       display: flex;
       flex-direction: column;
@@ -28,6 +37,7 @@ export function injectStyles(): void {
       width: 100vw;
       padding: 24px 16px;
       position: relative;
+      z-index: 1;
     }
 
     .game-title {
