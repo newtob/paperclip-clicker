@@ -44,10 +44,13 @@ export function injectStyles(): void {
       font-size: clamp(28px, 5vw, 48px);
       font-weight: 800;
       text-align: center;
-      color: #222;
+      color: #fff;
       letter-spacing: 2px;
       text-transform: lowercase;
       user-select: none;
+      background: #60a0ff;
+      padding: 6px 16px;
+      border-radius: 12px;
     }
 
     .level-indicator {
@@ -56,18 +59,24 @@ export function injectStyles(): void {
       right: 24px;
       font-size: clamp(14px, 2.5vw, 20px);
       font-weight: 700;
-      color: #555;
+      color: #fff;
       user-select: none;
+      background: #60a0ff;
+      padding: 4px 12px;
+      border-radius: 8px;
     }
 
     .device-name {
       font-size: clamp(14px, 2.5vw, 20px);
       font-weight: 600;
-      color: #444;
+      color: #fff;
       text-align: center;
       text-transform: capitalize;
       user-select: none;
       margin-top: 8px;
+      background: #60a0ff;
+      padding: 4px 12px;
+      border-radius: 8px;
     }
 
     .svg-container {
@@ -105,11 +114,14 @@ export function injectStyles(): void {
     .clip-counter {
       font-size: clamp(32px, 6vw, 56px);
       font-weight: 900;
-      color: #111;
+      color: #fff;
       text-align: center;
       user-select: none;
       font-variant-numeric: tabular-nums;
       min-height: 60px;
+      background: #60a0ff;
+      padding: 4px 20px;
+      border-radius: 12px;
     }
 
     .upgrade-btn {
@@ -118,10 +130,10 @@ export function injectStyles(): void {
       padding: 12px 28px;
       font-size: clamp(16px, 3vw, 22px);
       font-weight: 700;
-      border: 3px solid #333;
+      border: 3px solid #fff;
       border-radius: 16px;
-      background: #ffe066;
-      color: #222;
+      background: #60a0ff;
+      color: #fff;
       cursor: pointer;
       transition: transform 100ms ease, background-color 200ms ease;
       user-select: none;
@@ -129,7 +141,7 @@ export function injectStyles(): void {
     }
 
     .upgrade-btn:hover {
-      background: #ffd633;
+      background: #4888e8;
       transform: scale(1.05);
     }
 
@@ -149,6 +161,9 @@ export function injectStyles(): void {
       text-align: center;
       animation: win-pulse 1s ease-in-out infinite;
       user-select: none;
+      background: #60a0ff;
+      padding: 8px 20px;
+      border-radius: 12px;
     }
 
     @keyframes win-pulse {
@@ -177,18 +192,24 @@ export function injectStyles(): void {
       right: 24px;
       font-size: clamp(12px, 2vw, 16px);
       font-weight: 600;
-      color: #555;
+      color: #fff;
       text-align: right;
       user-select: none;
+      background: #60a0ff;
+      padding: 4px 12px;
+      border-radius: 8px;
     }
 
     .auto-click-label {
       font-size: clamp(12px, 2vw, 16px);
       font-weight: 600;
-      color: #333;
+      color: #fff;
       text-align: center;
       margin-top: 4px;
       user-select: none;
+      background: #60a0ff;
+      padding: 4px 12px;
+      border-radius: 8px;
     }
   `;
   document.head.appendChild(style);
