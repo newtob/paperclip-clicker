@@ -10,7 +10,7 @@ Create the entire game, including documentation in the `readme.md`.
 
 ## Project Structure
 
-```
+```text
 paperclip-clicker/
   package.json          (new)
   .npmrc                (new - strict-peer-dependencies=true)
@@ -76,7 +76,7 @@ The final level, 20, auto clicks at a rate of 3333/second.
 
 ## Background Colour Progression (pale grey -> rainbow)
 
-```
+```text
  1: #f0f0f0  (pale grey)        11: #30d8b0  (teal)
  2: #e8e8f0  (grey-blue hint)   12: #40e880  (green)
  3: #e0e0f8  (light lavender)   13: #80f040  (lime)
@@ -96,23 +96,25 @@ The final level, 20, should be based on magenta but include a multicolour explos
 
 ## Architecture
 
-### State (pure, no DOM)
 - `GameState = { readonly clips: number; readonly currentLevel: number }`
 - `game-state.ts` exports pure functions: `createInitialState`, `handleClick`, `canBuyNextDevice`, `buyNextDevice`, `isGameComplete`, `getCurrentLevel`
 - All return new `GameState` (immutable updates)
 
 ### Rendering (DOM only)
+
 - `renderer.ts` creates DOM structure: title -> SVG -> upgrade button -> counter
 - `RendererApi` type holds element references (no repeated DOM queries)
 - `updateRenderer()` syncs DOM to current state: counter text, background colour, upgrade button visibility/label, win state
 
 ### Wiring (main.ts)
+
 - Single mutable `let state: GameState` -- the only mutable binding
 - Click SVG -> `state = handleClick(state, LEVELS)` -> `updateRenderer()`
 - Click upgrade -> `state = buyNextDevice(state, LEVELS)` -> `updateRenderer()`
 - Win state shows "You win!" message with colour-cycling CSS animation
 
 ### SVG
+
 - Programmatic SVG creation (no innerHTML) -- stylised paperclip outline
 - Hover: `transform: scale(1.1)` with 150ms transition
 - Click: brief "squish" animation via toggled CSS class

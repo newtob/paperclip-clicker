@@ -3,7 +3,7 @@
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ES2025", "DOM"],
+    "lib": ["es2024", "dom"],
     "types": ["node"],
 
     "strict": true,
