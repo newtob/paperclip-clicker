@@ -116,6 +116,9 @@ export function updateRenderer(api: RendererApi, state: GameState): void {
       api.svgContainer.removeChild(currentSprite);
     }
     const newSprite = createDeviceSvg(expectedLevel);
+    // Scale sprite: 100% at level 1, 200% at level 20
+    const scale = 1 + (expectedLevel - 1) / 19;
+    newSprite.style.setProperty('--level-scale', String(scale));
     api.svgContainer.appendChild(newSprite);
     api.svgContainer.setAttribute('data-level', String(expectedLevel));
   }

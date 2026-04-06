@@ -90,11 +90,13 @@ export function injectStyles(): void {
     }
 
     .device-sprite {
+      --level-scale: 1;
       width: clamp(150px, 30vw, 250px);
       height: clamp(150px, 30vw, 250px);
       background-repeat: no-repeat;
       transition: transform 150ms ease;
       image-rendering: auto;
+      transform: scale(var(--level-scale));
     }
 
     .device-sprite-bear {
@@ -103,12 +105,12 @@ export function injectStyles(): void {
     }
 
     .svg-container:hover .device-sprite {
-      transform: scale(1.1);
+      transform: scale(calc(var(--level-scale) * 1.1));
     }
 
     .svg-container:active .device-sprite,
     .svg-container.squish .device-sprite {
-      transform: scale(0.9);
+      transform: scale(calc(var(--level-scale) * 0.9));
     }
 
     .clip-counter {
