@@ -1,7 +1,7 @@
 import type { GameState, Level } from './types.js';
 
 export function createInitialState(): GameState {
-  return { clips: 0, currentLevel: 1 };
+  return { clips: 0, currentLevel: 1, rebirths: 0 };
 }
 
 export function getCurrentLevel(state: GameState, levels: ReadonlyArray<Level>): Level {
@@ -14,7 +14,12 @@ export function getCurrentLevel(state: GameState, levels: ReadonlyArray<Level>):
 
 export function handleClick(state: GameState, levels: ReadonlyArray<Level>): GameState {
   const level = getCurrentLevel(state, levels);
-  return { ...state, clips: state.clips + level.clipsPerClick };
+  const multiplier = 1 + state.rebirths;
+  return { ...state, clips: state.clips + level.clipsPerClick * multiplier };
+}
+
+export function rebirth(state: GameState): GameState {
+  return { clips: 0, currentLevel: 1, rebirths: state.rebirths + 1 };
 }
 
 export function canBuyNextDevice(state: GameState, levels: ReadonlyArray<Level>): boolean {
@@ -39,6 +44,7 @@ export function buyNextDevice(state: GameState, levels: ReadonlyArray<Level>): G
   return {
     clips: state.clips - nextLevel.cost,
     currentLevel: state.currentLevel + 1,
+    rebirths: state.rebirths,
   };
 }
 

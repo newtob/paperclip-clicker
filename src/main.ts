@@ -1,5 +1,5 @@
 import { spawnConfetti } from './confetti.js';
-import { buyNextDevice, handleClick, isGameComplete } from './game-state.js';
+import { buyNextDevice, handleClick, isGameComplete, rebirth } from './game-state.js';
 import { LEVELS } from './levels.js';
 import { initializeRenderer, updateRenderer } from './renderer.js';
 import { injectStyles } from './styles.js';
@@ -25,7 +25,7 @@ if (!appEl) {
 }
 const app: HTMLElement = appEl;
 
-let state = { clips: 0, currentLevel: 1 };
+let state = { clips: 0, currentLevel: 1, rebirths: 0 };
 let autoClickInterval: ReturnType<typeof setInterval> | undefined;
 
 function startAutoClick(): void {
@@ -65,6 +65,12 @@ const api = initializeRenderer(
     if (state.currentLevel === 20 && !isGameComplete(state, LEVELS)) {
       startAutoClick();
     }
+  },
+  () => {
+    // Rebirth: reset to level 1 with increased multiplier
+    state = rebirth(state);
+    spawnConfetti(20);
+    updateRenderer(api, state);
   },
 );
 

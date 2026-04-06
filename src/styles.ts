@@ -84,6 +84,7 @@ export function injectStyles(): void {
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       cursor: pointer;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
@@ -152,6 +153,49 @@ export function injectStyles(): void {
     }
 
     .upgrade-btn.visible {
+      display: block;
+    }
+
+    .ghost-sprite {
+      position: absolute;
+      width: clamp(150px, 30vw, 250px);
+      height: clamp(150px, 30vw, 250px);
+      background-repeat: no-repeat;
+      image-rendering: auto;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .rebirth-btn {
+      display: none;
+      position: absolute;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 14px 28px;
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 800;
+      border: 3px solid #fff;
+      border-radius: 16px;
+      background: #60a0ff;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 100ms ease, background-color 200ms ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      z-index: 10;
+    }
+
+    .rebirth-btn:hover {
+      background: #4888e8;
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .rebirth-btn:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .rebirth-btn.visible {
       display: block;
     }
 

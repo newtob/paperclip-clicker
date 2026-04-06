@@ -8,6 +8,7 @@ export type Level = {
 export type GameState = {
   readonly clips: number;
   readonly currentLevel: number;
+  readonly rebirths: number;
 };
 
 export type RendererApi = {
@@ -15,6 +16,7 @@ export type RendererApi = {
   readonly levelEl: HTMLElement;
   readonly counterEl: HTMLElement;
   readonly upgradeBtn: HTMLButtonElement;
+  readonly rebirthBtn: HTMLButtonElement;
   readonly svgContainer: HTMLElement;
   readonly containerEl: HTMLElement;
   readonly deviceNameEl: HTMLElement;

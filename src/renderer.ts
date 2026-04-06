@@ -8,6 +8,7 @@ export function initializeRenderer(
   container: HTMLElement,
   onClickSvg: () => void,
   onClickUpgrade: () => void,
+  onClickRebirth: () => void,
 ): RendererApi {
   // Title
   const titleEl = document.createElement('h1');
@@ -52,6 +53,16 @@ export function initializeRenderer(
     onClickUpgrade();
   });
 
+  // Rebirth button
+  const rebirthBtn = document.createElement('button');
+  rebirthBtn.className = 'rebirth-btn';
+  rebirthBtn.type = 'button';
+  rebirthBtn.textContent = 'Rebirth';
+  rebirthBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    onClickRebirth();
+  });
+
   // Next level info
   const nextLevelEl = document.createElement('div');
   nextLevelEl.className = 'next-level-info';
@@ -62,6 +73,7 @@ export function initializeRenderer(
   container.appendChild(svgContainer);
   container.appendChild(counterEl);
   container.appendChild(upgradeBtn);
+  container.appendChild(rebirthBtn);
   container.appendChild(nextLevelEl);
 
   return {
@@ -69,6 +81,7 @@ export function initializeRenderer(
     levelEl,
     counterEl,
     upgradeBtn,
+    rebirthBtn,
     svgContainer,
     containerEl: container,
     deviceNameEl,
@@ -94,7 +107,8 @@ export function updateRenderer(api: RendererApi, state: GameState): void {
   api.counterEl.textContent = formatNumber(state.clips);
 
   // Update level indicator
-  api.levelEl.textContent = `Level ${String(state.currentLevel)}`;
+  const rebirthSuffix = state.rebirths > 0 ? ` · ${String(state.rebirths + 1)}x` : '';
+  api.levelEl.textContent = `Level ${String(state.currentLevel)}${rebirthSuffix}`;
 
   // Update device name
   api.deviceNameEl.textContent = level.deviceName;
@@ -106,21 +120,36 @@ export function updateRenderer(api: RendererApi, state: GameState): void {
     document.body.style.backgroundColor = bgColor;
   }
 
-  // Update device sprite if level changed
-  const currentSprite = api.svgContainer.querySelector('.device-sprite');
+  // Update device sprite if level or rebirths changed
   const expectedLevel = state.currentLevel;
+  const currentKey = `${String(expectedLevel)}-${String(state.rebirths)}`;
   const currentDataLevel = api.svgContainer.getAttribute('data-level');
 
-  if (currentDataLevel !== String(expectedLevel)) {
-    if (currentSprite) {
-      api.svgContainer.removeChild(currentSprite);
+  if (currentDataLevel !== currentKey) {
+    // Clear all existing sprites
+    const existingSprites = api.svgContainer.querySelectorAll('.device-sprite, .ghost-sprite');
+    for (const sprite of existingSprites) {
+      sprite.remove();
     }
+
+    // Render ghost sprites for each past rebirth (offset right and up by 50px each)
+    for (let i = 0; i < state.rebirths; i++) {
+      const ghost = createDeviceSvg(20);
+      ghost.classList.add('ghost-sprite');
+      ghost.classList.remove('device-sprite');
+      const offset = (i + 1) * 50;
+      ghost.style.transform = `translate(${String(offset)}px, ${String(-offset)}px)`;
+      ghost.style.zIndex = String(i);
+      api.svgContainer.appendChild(ghost);
+    }
+
+    // Render current active sprite on top
     const newSprite = createDeviceSvg(expectedLevel);
-    // Scale sprite: 100% at level 1, 200% at level 20
     const scale = 1 + (expectedLevel - 1) / 19;
     newSprite.style.setProperty('--level-scale', String(scale));
+    newSprite.style.zIndex = String(state.rebirths);
     api.svgContainer.appendChild(newSprite);
-    api.svgContainer.setAttribute('data-level', String(expectedLevel));
+    api.svgContainer.setAttribute('data-level', currentKey);
   }
 
   // Update next level info
@@ -132,18 +161,16 @@ export function updateRenderer(api: RendererApi, state: GameState): void {
     api.nextLevelEl.style.display = 'none';
   }
 
+  // Handle rebirth button — show at level 20
+  if (isComplete) {
+    api.rebirthBtn.classList.add('visible');
+  } else {
+    api.rebirthBtn.classList.remove('visible');
+  }
+
   // Handle upgrade button
   if (isComplete) {
     api.upgradeBtn.classList.remove('visible');
-
-    // Show win state
-    if (!api.containerEl.querySelector('.win-message')) {
-      const winMsg = document.createElement('div');
-      winMsg.className = 'win-message';
-      winMsg.textContent = 'You win!';
-      api.containerEl.appendChild(winMsg);
-      document.body.classList.add('win-state');
-    }
   } else if (canBuyNextDevice(state, LEVELS)) {
     const nextLevel = LEVELS[state.currentLevel];
     if (nextLevel) {
