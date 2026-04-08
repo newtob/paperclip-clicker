@@ -19,7 +19,7 @@ Paperclip Bear is a browser-based clicker game built with vanilla TypeScript and
 - Vite for dev server and bundling
 - Biome v2+ for linting and formatting
 - Vitest for testing
-- pnpm / npm for package management
+- Yarn 4 for package management (managed via Corepack)
 
 ## Key Conventions
 
@@ -27,3 +27,4 @@ Paperclip Bear is a browser-based clicker game built with vanilla TypeScript and
 - ESM-only (`"type": "module"` in package.json)
 - Strict TypeScript — no `any`, no `as` assertions, no enums
 - Biome for all linting/formatting — never ESLint or Prettier
+- `context7` use library /typescriptlang.org/docs for API and docs

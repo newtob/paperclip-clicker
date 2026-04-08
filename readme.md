@@ -42,23 +42,38 @@ Targeted at 9-year-olds for 5-10 minutes of fun.
 ### Prerequisites
 
 - Node.js 23.6+
-- npm
+- Yarn 4+ (managed via Corepack — run `corepack enable` to activate)
 
 ### Setup
 
 ```bash
-npm install
+yarn install
+```
+
+### Running the Site
+
+Start the dev server, then open the URL shown in the terminal (usually http://localhost:5173):
+
+```bash
+yarn dev
+```
+
+To preview a production build locally:
+
+```bash
+yarn build
+yarn preview
 ```
 
 ### Commands
 
 ```bash
-npm run dev        # Start dev server
-npm run build      # Production build
-npm run preview    # Preview production build
-npm run typecheck  # TypeScript type checking
-npm run lint       # Biome linting
-npm run test       # Run tests
+yarn dev           # Start dev server
+yarn build         # Production build
+yarn preview       # Preview production build
+yarn typecheck     # TypeScript type checking
+yarn lint          # Biome linting
+yarn test          # Run tests
 ```
 
 ## Deployment
