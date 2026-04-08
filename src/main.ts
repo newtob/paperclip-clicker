@@ -1,3 +1,4 @@
+import './index.css';
 import { spawnConfetti } from './confetti.js';
 import { buyNextDevice, handleClick, isGameComplete, rebirth } from './game-state.js';
 import { LEVELS } from './levels.js';

@@ -52,7 +52,7 @@ yarn install
 
 ### Running the Site
 
-Start the dev server, then open the URL shown in the terminal (usually http://localhost:5173):
+Start the dev server, then open the URL shown in the terminal (usually `http://localhost:5173`):
 
 ```bash
 yarn dev
@@ -75,6 +75,22 @@ yarn typecheck     # TypeScript type checking
 yarn lint          # Biome linting
 yarn test          # Run tests
 ```
+
+## shadcn ui
+
+The shadcn ui componnent library is used, **Radix** was selected as it is production ready and requires less setup.
+**Luma** was chosen for it's rounded corners and simpler layout.
+
+This took:
+`npm install tailwindcss @tailwindcss/vite`
+`yarn dlx shadcn@latest init -t vite`.
+
+## Upgrading yarn packages
+
+yarn up something@latest will work. The project has been configured to pin dependencies with `yarn config set defaultSemverRangePrefix ""`
+e.g.
+
+- `yarn up tailwindcss@latest`
 
 ## Deployment
 
