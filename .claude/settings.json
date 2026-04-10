@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vitest:*)",
+      "Bash(sips:*)",
+      "Bash(npm info:*)",
+      "Bash(npm search:*)",
+      "Bash(yarn build:*)"
+    ]
+  }
+}

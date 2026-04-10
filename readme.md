@@ -76,6 +76,13 @@ yarn lint          # Biome linting
 yarn test          # Run tests
 ```
 
+## Security
+
+Trivy & Semgrep
+
+- SCA: The following command was run on April 10th and found nothing: `Trivy fs .`
+- SAST: Semgrep ws also run with `semgrep scan` to find nothing.
+
 ## shadcn ui
 
 The shadcn ui componnent library is used, **Radix** was selected as it is production ready and requires less setup.
