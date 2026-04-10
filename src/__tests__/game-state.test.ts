@@ -55,12 +55,12 @@ describe('handleClick', () => {
 
 describe('canBuyNextDevice', () => {
   it('returns false when not enough clips', () => {
-    const state = { clips: 20, currentLevel: 1, rebirths: 0 };
+    const state = { clips: 19, currentLevel: 1, rebirths: 0 };
     expect(canBuyNextDevice(state, LEVELS)).toBe(false);
   });
 
   it('returns true at exact cost', () => {
-    const state = { clips: 25, currentLevel: 1, rebirths: 0 };
+    const state = { clips: 20, currentLevel: 1, rebirths: 0 };
     expect(canBuyNextDevice(state, LEVELS)).toBe(true);
   });
 
@@ -79,7 +79,7 @@ describe('buyNextDevice', () => {
   it('deducts cost and advances level', () => {
     const state = { clips: 35, currentLevel: 1, rebirths: 0 };
     const next = buyNextDevice(state, LEVELS);
-    expect(next.clips).toBe(10); // 35 - 25
+    expect(next.clips).toBe(15); // 35 - 20
     expect(next.currentLevel).toBe(2);
   });
 

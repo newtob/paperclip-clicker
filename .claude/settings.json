@@ -5,7 +5,8 @@
       "Bash(sips:*)",
       "Bash(npm info:*)",
       "Bash(npm search:*)",
-      "Bash(yarn build:*)"
+      "Bash(yarn build:*)",
+      "Bash(yarn test:*)"
     ]
   }
 }

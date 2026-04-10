@@ -1,19 +1,23 @@
 import './index.css';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 import { spawnConfetti } from './confetti.js';
 import { buyNextDevice, handleClick, isGameComplete, rebirth } from './game-state.js';
 import { LEVELS } from './levels.js';
 import { initializeRenderer, updateRenderer } from './renderer.js';
 import { injectStyles } from './styles.js';
-import { injectSpeedInsights } from '@vercel/speed-insights';
 
 injectSpeedInsights();
 
 injectStyles();
 
 // Prevent accidental zoom (Ctrl/Cmd+scroll and Ctrl/Cmd+plus/minus)
-document.addEventListener('wheel', (e) => {
-  if (e.ctrlKey || e.metaKey) e.preventDefault();
-}, { passive: false });
+document.addEventListener(
+  'wheel',
+  (e) => {
+    if (e.ctrlKey || e.metaKey) e.preventDefault();
+  },
+  { passive: false },
+);
 
 document.addEventListener('contextmenu', (e) => e.preventDefault());
 

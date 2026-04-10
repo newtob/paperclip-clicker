@@ -1,5 +1,5 @@
+import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite'
 import { sri } from 'vite-plugin-sri3';
 
 export default defineConfig({
@@ -8,8 +8,5 @@ export default defineConfig({
     outDir: 'dist',
     target: 'esnext',
   },
-  plugins: [
-    tailwindcss(),
-    sri(),
-  ],
+  plugins: [tailwindcss(), sri()],
 });

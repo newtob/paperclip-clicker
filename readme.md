@@ -68,12 +68,14 @@ yarn preview
 ### Commands
 
 ```bash
-yarn dev           # Start dev server
-yarn build         # Production build
-yarn preview       # Preview production build
-yarn typecheck     # TypeScript type checking
-yarn lint          # Biome linting
-yarn test          # Run tests
+yarn dev                          # Start dev server
+yarn build                        # Production build
+yarn preview                      # Preview production build
+yarn typecheck                    # TypeScript type checking
+yarn lint                         # Biome linting
+yarn biome check --write          # fix issues
+yarn biome check --write --unsafe # fix unsafe
+yarn test                         # Run tests
 ```
 
 ## Security
