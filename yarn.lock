@@ -534,7 +534,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/vite@npm:^4.2.2":
+"@tailwindcss/vite@npm:4.2.2":
   version: 4.2.2
   resolution: "@tailwindcss/vite@npm:4.2.2"
   dependencies:
@@ -626,6 +626,36 @@ __metadata:
     vue-router:
       optional: true
   checksum: 10c0/c788c03d0f072f6f2be52d3f6f4f0680d2343f0d8765a759a044204223b14a6e14b285d0c5d5d05c0b66d4419746c5b245656ebdc48398328d85d96f1ede982b
+  languageName: node
+  linkType: hard
+
+"@vercel/speed-insights@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@vercel/speed-insights@npm:2.0.0"
+  peerDependencies:
+    "@sveltejs/kit": ^1 || ^2
+    next: ">= 13"
+    nuxt: ">= 3"
+    react: ^18 || ^19 || ^19.0.0-rc
+    svelte: ">= 4"
+    vue: ^3
+    vue-router: ^4
+  peerDependenciesMeta:
+    "@sveltejs/kit":
+      optional: true
+    next:
+      optional: true
+    nuxt:
+      optional: true
+    react:
+      optional: true
+    svelte:
+      optional: true
+    vue:
+      optional: true
+    vue-router:
+      optional: true
+  checksum: 10c0/a8703abcf72f6317183be13a5e991883589c48a8107fedb47d075af08e2d5a71d93e22c1927c8d0c28a69bb0e4712e90386d50947851883b6169c715cd43b4eb
   languageName: node
   linkType: hard
 
@@ -1284,10 +1314,11 @@ __metadata:
   resolution: "paperclip-bear@workspace:."
   dependencies:
     "@biomejs/biome": "npm:2.4.10"
-    "@tailwindcss/vite": "npm:^4.2.2"
+    "@tailwindcss/vite": "npm:4.2.2"
     "@total-typescript/ts-reset": "npm:0.6.1"
     "@types/node": "npm:^25.5.2"
     "@vercel/analytics": "npm:2.0.1"
+    "@vercel/speed-insights": "npm:2.0.0"
     tailwindcss: "npm:4.2.2"
     typescript: "npm:6.0.2"
     vite: "npm:8.0.7"

@@ -85,6 +85,12 @@ This took:
 `npm install tailwindcss @tailwindcss/vite`
 `yarn dlx shadcn@latest init -t vite`.
 
+### preset b4OWjqdse
+
+`yarn dlx shadcn@latest init --preset b4OWjqdse --template vite`
+
+`yarn dlx shadcn@latest add card`
+
 ## Upgrading yarn packages
 
 yarn up something@latest will work. The project has been configured to pin dependencies with `yarn config set defaultSemverRangePrefix ""`
