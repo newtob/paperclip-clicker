@@ -4,7 +4,9 @@ import { buyNextDevice, handleClick, isGameComplete, rebirth } from './game-stat
 import { LEVELS } from './levels.js';
 import { initializeRenderer, updateRenderer } from './renderer.js';
 import { injectStyles } from './styles.js';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+injectSpeedInsights();
 
 injectStyles();
 
