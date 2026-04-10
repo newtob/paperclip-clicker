@@ -9,12 +9,14 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "upload-blobs": "tsx scripts/upload-blobs.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.10",
     "@total-typescript/ts-reset": "0.6.1",
     "@types/node": "^25.5.2",
+    "tsx": "4.21.0",
     "typescript": "6.0.2",
     "vite": "8.0.7",
     "vite-plugin-sri3": "2.0.0",
@@ -24,6 +26,7 @@
   "dependencies": {
     "@tailwindcss/vite": "4.2.2",
     "@vercel/analytics": "2.0.1",
+    "@vercel/blob": "2.3.3",
     "@vercel/speed-insights": "2.0.0",
     "tailwindcss": "4.2.2"
   },

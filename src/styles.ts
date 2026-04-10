@@ -1,4 +1,7 @@
+import { blobUrl } from './blob-urls.js';
+
 export function injectStyles(): void {
+  const backgroundUrl = blobUrl('/background.png');
   const style = document.createElement('style');
   style.textContent = `
     *, *::before, *::after {
@@ -23,7 +26,7 @@ export function injectStyles(): void {
       content: '';
       position: fixed;
       inset: 0;
-      background: url('/background.png') center center / cover no-repeat;
+      background: url('${backgroundUrl}') center center / cover no-repeat;
       pointer-events: none;
       z-index: 0;
     }

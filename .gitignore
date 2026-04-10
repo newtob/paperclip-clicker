@@ -4,3 +4,5 @@ build/
 coverage/
 .next/
 *.min.js
+.vercel
+.env*.local
